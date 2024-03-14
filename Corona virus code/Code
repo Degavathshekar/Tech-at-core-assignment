@@ -48,3 +48,8 @@ public class Main {
         //b[b.length - 1]]one of the worst possible scenarios,
     }
 }
+//example
+input
+1 2 3 4 5
+output
+5 5 
