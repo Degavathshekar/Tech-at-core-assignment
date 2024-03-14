@@ -1,0 +1,50 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the N people in the street");
+        int street_size = 0;//street size is an variable of an total N people
+        if (sc.hasNextInt()) {
+            street_size = sc.nextInt();
+        }
+        int[] arr = new int[street_size]; //arr will store the number of position
+        System.out.println("enter the number of position ");
+
+        for (int i = 0; i < street_size; i++) {
+            if (sc.hasNextInt()) {
+                arr[i] = sc.nextInt();
+
+            }
+        }
+        int b[] = new int[street_size];
+        for (int j = 0; j < street_size; j++) {
+            b[j] = 1;//there will be one person infect with virus and stored in the b variable
+        }
+        for (int j = 0; j < street_size; j++) {
+            //checking on the leftside of the current position
+            for (int k = j; k > 0; k--) {
+                if (Math.abs(arr[k] - arr[k - 1]) <= 2) {
+                    b[j]++;
+                } else
+                    break;
+
+            }
+
+            //checking for the right side of the current possition
+            for (int k = j; k < street_size - 1; k++) {
+                if (Math.abs(arr[k] - arr[k + 1]) <= 2) {
+                    b[j]++;
+                } else
+                    break;
+
+            }
+
+        }
+
+
+        Arrays.sort(b);
+        System.out.println(b[0] + " " + b[b.length - 1]);//b[0] one of the best possible scenarios,
+        //b[b.length - 1]]one of the worst possible scenarios,
+    }
+}
